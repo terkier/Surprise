@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Surprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      font-family: 'Winky Rough', cursive;
+      background-color: #fff0f5;
+      overflow: hidden;
+    }
+
+    .scene {
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .scene.active {
+      display: flex;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #ff1493;
+    }
+
+    .birthday-message {
+      font-size: 3rem;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-box {
+      max-width: 600px;
+      background: linear-gradient(to left, snow, white);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-y: auto;
+      max-height: 80vh;
+      
+    }
+
+    .heart-button {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      font-size: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      transform: translateX(-50%);
+    }
+
+    .bayot-message {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    color: #d81b60;
+    font-weight: bold;
+    z-index: 2;
+  }
+
+
+    .bayot-message.show {
+      opacity: 1;
+    }
+
+    canvas.confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes heartbeat {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  25% {
+    transform: translateX(-50%) scale(1.1);
+  }
+  50% {
+    transform: translateX(-50%) scale(0.95);
+  }
+  75% {
+    transform: translateX(-50%) scale(1.05);
+  }
+}
+
+.heart-button {
+  animation: heartbeat 1.5s infinite;
+  padding: 10px; 
+  font-size: 50px; 
+}
+
+@media (max-width: 480px) {
+  .scroll-box {
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .birthday-message {
+    font-size: 2rem;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-height: 700px) {
+  .scroll-box {
+    max-height: 90vh;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  
+  <canvas class="confetti-canvas"></canvas>
+
+  <div id="scene1" class="scene active">
+    <h1>Want a surprise?</h1>
+    <button class="button" onclick="goToScene(2)">Yes</button>
+  </div>
+
+  <div id="scene2" class="scene">
+    <h1 class="birthday-message">Happy Birthday, Pree!!!</h1>
+    <button class="button" onclick="goToScene(3)">Read My Letter</button>
+  </div>
+
+  <div id="scene3" class="scene">
+    <div class="scroll-box">
+      Let’s just pause for a second and acknowledge something important: you’ve successfully survived another 365 days of being effortlessly iconic. Honestly, I’m not sure how you do it — balancing the soft spoken charm of a rom-com lead with the fierce energy of someone who’d probably win an Uncanny Counter mission and still come home with sinigang for dinner. Today’s your day, and that means more ice cream than your brain can handle, Clover chips without the guilt, and maybe even a little Ego by Peach Luffe playing softly in the background like life is secretly editing a movie montage of you being the main character — which, let’s be honest, you kind of are. I still find it funny how you light up when talking about mangoes or fudgee bars, then shift gears like a K-drama scene cut and dive deep into science like you’re trying to win a Nobel Prize with your brain and a Yakult. I admire that. A lot, actually. You have this weirdly rare mix of soft and sharp — sweet, but not in a try-hard way. It’s like, if sinigang had a personality. And if life gave awards for being fam-oriented, funny, supportive, and lowkey smelling nice without even trying, I’m pretty sure you’d sweep every category. The tall part? Hmm. Well, let’s just say you stand tall in spirit, and that’s what really counts. Right? Anyway, I won’t make this too cheesy (I know you’d roast me for that), but here’s what I will say: I hope this birthday feels like your favorite comfort show — something you’d rewatch even when you know all the scenes by heart, something warm, a little chaotic, with just the right plot twists to keep things interesting. Keep being you — the puppy-loving, blue-wearing, Demon Slayer-watching, secretly soft but cool on the outside, Twilight-defending (I’m still judging), heart of the group. Happy Birthday. From someone who ask for your favorites(forcefully?), more than they let on. (click the heart!)
+    </div>
+    <button class="heart-button" onclick="revealBayot()">❤️</button>
+    <div class="bayot-message" id="bayot">bayot</div>
+  </div>
+
+  <script>
+    function goToScene(sceneNumber) {
+      document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+      document.getElementById(`scene${sceneNumber}`).classList.add('active');
+    }
+
+    function revealBayot() {
+      document.getElementById('bayot').classList.add('show');
+    }
+
+    
+    const canvas = document.querySelector('.confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confettiPieces = Array.from({ length: 150 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 6 + 4,
+      d: Math.random() * 50,
+      color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+      tilt: Math.random() * 10 - 5,
+      tiltAngle: 0
+    }));
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach(p => {
+        ctx.beginPath();
+        ctx.lineWidth = p.r;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+        ctx.stroke();
+      });
+      updateConfetti();
+    }
+
+    function updateConfetti() {
+      confettiPieces.forEach(p => {
+        p.tiltAngle += 0.05;
+        p.y += Math.cos(p.d) + 1 + p.r / 2;
+        p.x += Math.sin(p.d);
+        p.tilt = Math.sin(p.tiltAngle) * 15;
+        if (p.y > canvas.height) {
+          p.x = Math.random() * canvas.width;
+          p.y = -10;
+        }
+      });
+    }
+
+    function animate() {
+      drawConfetti();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
+
