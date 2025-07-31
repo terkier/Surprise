@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -160,6 +160,12 @@
   }
 }
 
+#letterContainer p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
 
   </style>
 </head>
@@ -178,9 +184,22 @@
   </div>
 
   <div id="scene3" class="scene">
-    <div class="scroll-box">
-      Let’s just pause for a second and acknowledge something important: you’ve successfully survived another 365 days of being effortlessly iconic. Honestly, I’m not sure how you do it — balancing the soft spoken charm of a rom-com lead with the fierce energy of someone who’d probably win an Uncanny Counter mission and still come home with sinigang for dinner. Today’s your day, and that means more ice cream than your brain can handle, Clover chips without the guilt, and maybe even a little Ego by Peach Luffe playing softly in the background like life is secretly editing a movie montage of you being the main character — which, let’s be honest, you kind of are. I still find it funny how you light up when talking about mangoes or fudgee bars, then shift gears like a K-drama scene cut and dive deep into science like you’re trying to win a Nobel Prize with your brain and a Yakult. I admire that. A lot, actually. You have this weirdly rare mix of soft and sharp — sweet, but not in a try-hard way. It’s like, if sinigang had a personality. And if life gave awards for being fam-oriented, funny, supportive, and lowkey smelling nice without even trying, I’m pretty sure you’d sweep every category. The tall part? Hmm. Well, let’s just say you stand tall in spirit, and that’s what really counts. Right? Anyway, I won’t make this too cheesy (I know you’d roast me for that), but here’s what I will say: I hope this birthday feels like your favorite comfort show — something you’d rewatch even when you know all the scenes by heart, something warm, a little chaotic, with just the right plot twists to keep things interesting. Keep being you — the puppy-loving, blue-wearing, Demon Slayer-watching, secretly soft but cool on the outside, Twilight-defending (I’m still judging), heart of the group. Happy Birthday. From someone who ask for your favorites(forcefully?), more than they let on. (click the heart!)
-    </div>
+    <div class="scroll-box" id="letterContainer">
+  <p>Let’s just pause for a second and acknowledge something important: you’ve successfully survived another 365 days of being effortlessly iconic.</p>
+  <p>Honestly, I’m not sure how you do it — balancing the soft spoken charm of a rom-com lead with the fierce energy of someone who’d probably win an Uncanny Counter mission and still come home with sinigang for dinner.</p>
+  <p>Today’s your day, and that means more ice cream than your brain can handle, Clover chips without the guilt, and maybe even a little Ego by Peach Luffe playing softly in the background like life is secretly editing a movie montage of you being the main character — which, let’s be honest, you kind of are.</p>
+  <p>I still find it funny how you light up when talking about mangoes or fudgee bars, then shift gears like a K-drama scene cut and dive deep into science like you’re trying to win a Nobel Prize with your brain and a Yakult.</p>
+  <p>I admire that. A lot, actually. You have this weirdly rare mix of soft and sharp — sweet, but not in a try-hard way. It’s like, if sinigang had a personality.</p>
+  <p>And if life gave awards for being fam-oriented, funny, supportive, and lowkey smelling nice without even trying, I’m pretty sure you’d sweep every category.</p>
+  <p>The tall part? Hmm. Well, let’s just say you stand tall in spirit, and that’s what really counts. Right?</p>
+  <p>Anyway, I won’t make this too cheesy (I know you’d roast me for that), but here’s what I will say:</p>
+  <p>I hope this birthday feels like your favorite comfort show — something you’d rewatch even when you know all the scenes by heart, something warm, a little chaotic, with just the right plot twists to keep things interesting.</p>
+  <p>Keep being you — the puppy-loving, blue-wearing, Demon Slayer-watching, secretly soft but cool on the outside, Twilight-defending (I’m still judging), heart of the group.</p>
+  <p>Happy Birthday. From someone who ask for your favorites (forcefully?), more than they let on.</p>
+  <p>(click the heart!)</p>
+</div>
+
+
     <button class="heart-button" onclick="revealBayot()">❤️</button>
     <div class="bayot-message" id="bayot">bayot</div>
   </div>
@@ -243,7 +262,27 @@
     }
 
     animate();
+
+    function revealLetterLines() {
+  const lines = document.querySelectorAll('#letterContainer p');
+  lines.forEach((line, index) => {
+    setTimeout(() => {
+      line.style.opacity = 1;
+      line.style.transform = 'translateY(0)';
+    }, index * 1300);
+  });
+}
+
+function goToScene(sceneNumber) {
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  const targetScene = document.getElementById(`scene${sceneNumber}`);
+  targetScene.classList.add('active');
+  if (sceneNumber === 3) {
+    revealLetterLines();
+  }
+}
+
+
   </script>
 </body>
 </html>
-
